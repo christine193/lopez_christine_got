@@ -11,7 +11,7 @@
       playButton = document.querySelector('.controls'),
       imageBanner = document.querySelector('#houseImages'),
       aboutHouse = document.querySelector('.house-info'),
-      houseArray = [
+      textArray = [
         "House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.",
         "House Baratheon of Storm's End is a legally extinct Great House of Westeros. A cadet branch was formerly the royal house, but House Lannister now controls the throne. House Baratheon traditionally ruled the Stormlands on the eastern coast of Westeros, aptly named for its frequent storms, from their seat of Storm's End.   House Baratheon became the royal house of the Seven Kingdoms after Robert Baratheon led a rebellion against the Targaryen dynasty. At the end of the rebellion, Robert ascended the Iron Throne as Robert I and married Cersei Lannister after the death of Lyanna Stark.",
         "House Lannister of Casterly Rock is one of the Great Houses of Westeros, one of its richest and most powerful families and oldest dynasties. It is also the current royal house of the Seven Kingdoms following the extinction of House Baratheon of King's Landing, which had been their puppet house anyway.   The Lannisters rule over the Westerlands. Their seat is Casterly Rock, a massive rocky promontory overlooking the Sunset Sea which has had habitations and fortifications built into it over the millennia. They are the Lords Paramount of the Westerlands and Wardens of the West. As the new royal house, they also rule directly over the Crownlands from their seat of the Red Keep in King's Landing, the traditional seat of the royal family.",
@@ -24,7 +24,7 @@
 
   function showHouseVideo() {
     let houseText = this.className.split(' ')[1].capIt();
-      aboutHouse.textContent = `${houseArray[this.dataset.offset]}`;
+      aboutHouse.textContent = `${textArray[this.dataset.offset]}`;
       document.querySelector('h1').textContent = `House ${houseText}`;
 
       lightbox.classList.add('show-lightbox');
@@ -32,11 +32,11 @@
       videoPlayer.src = `videos/House-${houseText}.${videoPlayer.currentSrc.split('.')[1]}`;
       videoPlayer.load();
       videoPlayer.play();
-      scrollBanners(this.dataset.offset);
+      moveBanners(this.dataset.offset);
 
   }
 
-  function scrollBanners(offset) {
+  function moveBanners(offset) {
     //Move the banner images
     //let moveIt = this.dataset.offset * 600 + "px";
     let moveIt = offset * 600 + "px";
@@ -45,7 +45,7 @@
   }
 
   function showLightBox() {
-    console.log('we did it reddit');
+    console.log('linked up');
   }
 
   function closeLightBox() {
@@ -77,4 +77,5 @@
   closeLightBoxButton.addEventListener('click', closeLightBox);
   videoPlayer.addEventListener('ended', closeLightBox);
   playButton.addEventListener('click', pausePlay);
+
 })();
